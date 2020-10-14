@@ -1,0 +1,2 @@
+# TactJam
+exploring vibrotactile patterns
