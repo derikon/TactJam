@@ -36,3 +36,8 @@ To make contribution easier for everyone we like use a common structure of git c
 ```
 
 Please refer to [www.conventionalcommits.org](https://www.conventionalcommits.org/en/v1.0.0/) for more information.
+
+### Code style
+
+This might not be the world’s largest code base. However, a consistent code style makes it easier to read and maintain. The people at Google are very experienced in this and have published their [guidelines](https://google.github.io/styleguide/) for different languages. For this project we want to orientate ourselves by this (e.g. [C++ style guide](https://google.github.io/styleguide/cppguide.html) for firmware code).
+
