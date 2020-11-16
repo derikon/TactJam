@@ -25,13 +25,14 @@ void setup() {
   if (!tactjam::display::SetupOLED()) {
     Serial.println("ERROR: display setup");
   }
+  // you should see text on the display
   tactjam::display::TestStaticScreen();
   delay(10000);
+  // you should see lines drawn one after another across the display
+  tactjam::display::TestDrawLine();
 #endif
 }
 
 void loop() {
-#ifdef TACTJAM_TEST_OLED
-  tactjam::display::TestDrawLine();
-#endif
+
 }
