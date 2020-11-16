@@ -2,12 +2,17 @@
 
 // uncomment the parts you want to include
 #define TACTJAM_TEST_OLED
+#define TACTJAM_TEST_BUZZER
 
 
 
 #ifdef TACTJAM_TEST_OLED
 #include "oled.h"
 #endif
+#ifdef TACTJAM_TEST_BUZZER
+#include "buzzer.h"
+#endif
+
 
 const unsigned long baudRate = 115200;
 
@@ -23,7 +28,7 @@ void setup() {
 #ifdef TACTJAM_TEST_OLED
   Serial.println("\tOLED display");
   if (!tactjam::display::SetupOLED()) {
-    Serial.println("ERROR: display setup");
+    Serial.println("\tERROR: display setup");
   }
   // you should see text on the display
   tactjam::display::TestStaticScreen();
@@ -31,7 +36,12 @@ void setup() {
   // you should see lines drawn one after another across the display
   tactjam::display::TestDrawLine();
 #endif
+#ifdef TACTJAM_TEST_BUZZER
+  Serial.println("\tbuzzer");
+  tactjam::buzzer::TestMelody();
+#endif
 }
+
 
 void loop() {
 
