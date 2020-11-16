@@ -10,14 +10,13 @@ namespace buzzer {
   const uint32_t duration = 300;
 
 
-  void NoTone()
-  {
+  void NoTone(uint32_t duration = duration) {
       ledcDetachPin(pin);
       ledcWrite(pwmChannel, 0);
+      delay(duration);
   }
 
-  void Tone(double frequency, uint32_t duration = duration)
-  {
+  void Tone(double frequency, uint32_t duration = duration) {
       if (ledcRead(pwmChannel)) {
           return;
       }
@@ -25,21 +24,21 @@ namespace buzzer {
       ledcWriteTone(pwmChannel, frequency);
       if (duration>1) {
           delay(duration);
-          NoTone();
+          NoTone(0);
       }    
   }
 
   void TestMelody() {
     Tone(600);
-    delay(duration);
+    NoTone();
     Tone(300);
-    delay(duration);
+    NoTone();
     Tone(600);
-    delay(duration);
+    NoTone();
     Tone(600);
-    delay(100);
+    NoTone(100);
     Tone(600);
-    delay(100);
+    NoTone(100);
   }
 }
 }
