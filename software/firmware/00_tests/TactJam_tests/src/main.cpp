@@ -4,6 +4,7 @@
 #define TACTJAM_TEST_OLED
 #define TACTJAM_TEST_BUZZER
 #define TACTJAM_TEST_ESPCONFIG
+#define TACTJAM_TEST_SIPO
 
 
 
@@ -15,6 +16,9 @@
 #endif 
 #ifdef TACTJAM_TEST_ESPCONFIG
 #include "espConfig.h"
+#endif
+#ifdef TACTJAM_TEST_SIPO
+#include "shiftRegisterSIPO.h"
 #endif
 
 
@@ -46,6 +50,11 @@ void setup() {
 #ifdef TACTJAM_TEST_BUZZER
   Serial.println("\tbuzzer");
   tactjam::buzzer::TestMelody();
+#endif
+#ifdef TACTJAM_TEST_SIPO
+  Serial.println("\tShift Registers (SIPO)");
+  tactjam::shiftregister::SetupSIPO();
+  tactjam::shiftregister::TestSIPO();
 #endif
 }
 
