@@ -5,10 +5,10 @@
 
 namespace tactjam {
 namespace config {
-    void DisableEspRadios() {
-        WiFi.mode(WIFI_OFF);
-        btStop();
-    }
+  void DisableEspRadios() {
+    WiFi.mode(WIFI_OFF);
+    btStop();
+  }
 }
 }
 
