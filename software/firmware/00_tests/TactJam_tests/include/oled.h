@@ -55,6 +55,8 @@ namespace display {
       delay(1);
     }
     delay(250);
+    oled.clearDisplay();
+    oled.display();
 }
 
 }
