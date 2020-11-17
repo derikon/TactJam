@@ -3,6 +3,7 @@
 // uncomment the parts you want to include
 #define TACTJAM_TEST_OLED
 #define TACTJAM_TEST_BUZZER
+#define TACTJAM_TEST_ESPCONFIG
 
 
 
@@ -11,7 +12,12 @@
 #endif
 #ifdef TACTJAM_TEST_BUZZER
 #include "buzzer.h"
+#endif 
+#ifdef TACTJAM_TEST_ESPCONFIG
+#include "espConfig.h"
 #endif
+
+
 
 
 const unsigned long baudRate = 115200;
@@ -24,7 +30,10 @@ void setup() {
   }
   Serial.println("TactJam – Test Suite");
   Serial.println("incl.:");
-
+#ifdef TACTJAM_TEST_ESPCONFIG
+  Serial.println("\tESP configurations");
+  tactjam::config::DisableEspRadios();
+#endif
 #ifdef TACTJAM_TEST_OLED
   Serial.println("\tOLED display");
   if (!tactjam::display::SetupOLED()) {
