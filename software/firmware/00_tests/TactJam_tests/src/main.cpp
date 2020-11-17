@@ -5,6 +5,7 @@
 #define TACTJAM_TEST_BUZZER
 #define TACTJAM_TEST_ESPCONFIG
 #define TACTJAM_TEST_SIPO
+#define TACTJAM_TEST_PISO
 
 
 
@@ -19,6 +20,9 @@
 #endif
 #ifdef TACTJAM_TEST_SIPO
 #include "shiftRegisterSIPO.h"
+#endif
+#ifdef TACTJAM_TEST_PISO
+#include "shiftregisterPISO.h"
 #endif
 
 
@@ -56,9 +60,24 @@ void setup() {
   tactjam::shiftregister::SetupSIPO();
   tactjam::shiftregister::TestSIPO();
 #endif
+#ifdef TACTJAM_TEST_PISO
+  Serial.println("\tShift Registers (PISO)");
+  tactjam::shiftregister::SetupPISO();
+#endif
 }
 
 
 void loop() {
-
+#ifdef TACTJAM_TEST_PISO
+  uint8_t activeButtons = tactjam::shiftregister::ReadFromPISO();
+  if (activeButtons != 0) {
+    Serial.print("activeButtons DEC: ");
+    Serial.println(activeButtons, DEC);
+    Serial.print("activeButtons BIN: ");
+    Serial.println(activeButtons, BIN);
+  }
+#ifdef TACTJAM_TEST_SIPO
+  tactjam::shiftregister::UpdateSIPO(activeButtons);
+#endif
+#endif
 }

@@ -17,8 +17,8 @@ namespace shiftregister {
   const uint8_t latchPinSIPO = 18;
   const uint8_t clockPinSiPO = 19;
   const uint8_t dataPinSIPO = 5;
-  const uint8_t bitOrderSIPO = MSBFIRST;
-  const uint32_t delayMillis = 100;
+  const uint8_t bitOrderSIPO = LSBFIRST;
+  const uint32_t delayMillis = 50;
 
   bool initializedSIPO = false;
 
