@@ -6,6 +6,7 @@
 #define TACTJAM_TEST_ESPCONFIG
 #define TACTJAM_TEST_SIPO
 #define TACTJAM_TEST_PISO
+#define TACTJAM_TEST_I2CSCAN
 
 
 
@@ -27,6 +28,10 @@ tactjam::shiftregister::sipo::SN74HC595 led_shiftregister;
 #ifdef TACTJAM_TEST_PISO
 #include "shiftregisterPISO.h"
 tactjam::shiftregister::piso::M74HC166 buttons_shiftregister;
+#endif
+#ifdef TACTJAM_TEST_I2CSCAN
+#include "i2cScan.h"
+tactjam::i2c::Scanner i2c_scanner;
 #endif
 
 
@@ -68,6 +73,9 @@ void setup() {
   Serial.println("\tShift Registers (PISO)");
   buttons_shiftregister.Initialize();
 #endif
+#ifdef TACTJAM_TEST_I2CSCAN
+  i2c_scanner.Initialize();
+#endif
 }
 
 
@@ -83,5 +91,9 @@ void loop() {
 #ifdef TACTJAM_TEST_SIPO
   led_shiftregister.Update(activeButtons);
 #endif
+#endif
+#ifdef TACTJAM_TEST_I2CSCAN
+  i2c_scanner.Scan();
+  delay(3000);
 #endif
 }
