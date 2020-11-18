@@ -7,6 +7,7 @@
 #define TACTJAM_TEST_SIPO
 #define TACTJAM_TEST_PISO
 #define TACTJAM_TEST_I2CSCAN
+#define TACTJAM_TEXT_PWMMULTIPLEXER
 
 
 
@@ -32,6 +33,10 @@ tactjam::shiftregister::piso::M74HC166 buttons_shiftregister;
 #ifdef TACTJAM_TEST_I2CSCAN
 #include "i2cScan.h"
 tactjam::i2c::Scanner i2c_scanner;
+#endif
+#ifdef TACTJAM_TEXT_PWMMULTIPLEXER
+#include "pwmMultiplxer.h"
+tactjam::pwm::PWMPCA9685 actuators;
 #endif
 
 
@@ -76,6 +81,10 @@ void setup() {
 #ifdef TACTJAM_TEST_I2CSCAN
   i2c_scanner.Initialize();
 #endif
+#ifdef TACTJAM_TEXT_PWMMULTIPLEXER
+  Serial.println("\tPWM Multiplexer");
+  actuators.Initialize();
+#endif
 }
 
 
@@ -95,5 +104,8 @@ void loop() {
 #ifdef TACTJAM_TEST_I2CSCAN
   i2c_scanner.Scan();
   delay(3000);
+#endif
+#ifdef TACTJAM_TEXT_PWMMULTIPLEXER
+  actuators.Test();
 #endif
 }
