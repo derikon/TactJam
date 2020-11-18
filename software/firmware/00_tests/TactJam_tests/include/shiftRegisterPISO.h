@@ -14,39 +14,65 @@
 
 namespace tactjam {
 namespace shiftregister {
-  const uint8_t latchPinPISO = 16;
-  const uint8_t clockPinPISO = 17;
-  const uint8_t dataPinPISO = 4;
+namespace piso {
 
-  bool initializedPISO = false;
+class M74HC166 {
+  private:
+    uint8_t latch_pin_;
+    uint8_t clock_pin_;
+    uint8_t data_pin_;
+    uint8_t data_;
+    bool initialized_;
 
-  void SetupPISO() {
-    pinMode(latchPinPISO, OUTPUT);
-    pinMode(clockPinPISO, OUTPUT);
-    pinMode(dataPinPISO, INPUT);
-    initializedPISO = true;
-  }
-
-  uint8_t ReadFromPISO() {
-    if (!initializedPISO) {
-      return 0;
+  public:
+    M74HC166() {
+      // default configuration
+      M74HC166(16, 17, 4);
     }
-    digitalWrite(latchPinPISO, LOW);
-    digitalWrite(clockPinPISO, LOW);
-    digitalWrite(clockPinPISO, HIGH);
-    digitalWrite(latchPinPISO, HIGH);
-    uint8_t data = 0;
-    for(uint8_t j = 0; j < 8; j++) {
-      uint8_t pinVal = digitalRead(dataPinPISO);
-      if (!pinVal) {
-        uint8_t a = (1 << j);
-        data = data | a;
+
+    M74HC166(uint8_t latch_pin, uint8_t clock_pin, uint8_t data_pin) {
+      latch_pin_ = latch_pin;
+      clock_pin_ = clock_pin;
+      data_pin_ = data_pin;
+      initialized_ = false;
+    }
+
+    void ChangePins(uint8_t latch_pin, uint8_t clock_pin, uint8_t data_pin) {
+      latch_pin_ = latch_pin;
+      clock_pin_ = clock_pin;
+      data_pin_ = data_pin;
+      Initialize();
+    }
+
+    void Initialize() {
+      pinMode(latch_pin_, OUTPUT);
+      pinMode(clock_pin_, OUTPUT);
+      pinMode(data_pin_, OUTPUT);
+      initialized_ = true;
+    }
+
+    uint8_t Read() {
+      if (!initialized_) {
+        Initialize();
       }
-      digitalWrite(clockPinPISO, LOW);
-      digitalWrite(clockPinPISO, HIGH);
+      digitalWrite(latch_pin_, LOW);
+      digitalWrite(clock_pin_, LOW);
+      digitalWrite(clock_pin_, HIGH);
+      digitalWrite(latch_pin_, HIGH);
+      data_ = 0;
+      for(uint8_t j = 0; j < 8; j++) {
+        if (!digitalRead(data_pin_)) {
+          data_ = data_ | (uint8_t)((uint8_t)1 << j);
+        }
+        digitalWrite(clock_pin_, LOW);
+        digitalWrite(clock_pin_, HIGH);
+      }
+      return data_;
     }
-    return data;
-  }
+};
+
 }
 }
+}
+
 #endif //_TACTJAM_SHIFTREGISTER_PISO_

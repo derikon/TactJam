@@ -11,18 +11,22 @@
 
 #ifdef TACTJAM_TEST_OLED
 #include "oled.h"
+tactjam::display::OLED_i2c oled_display;
 #endif
 #ifdef TACTJAM_TEST_BUZZER
 #include "buzzer.h"
+tactjam::Buzzer buzzer;
 #endif 
 #ifdef TACTJAM_TEST_ESPCONFIG
 #include "espConfig.h"
 #endif
 #ifdef TACTJAM_TEST_SIPO
 #include "shiftRegisterSIPO.h"
+tactjam::shiftregister::sipo::SN74HC595 led_shiftregister;
 #endif
 #ifdef TACTJAM_TEST_PISO
 #include "shiftregisterPISO.h"
+tactjam::shiftregister::piso::M74HC166 buttons_shiftregister;
 #endif
 
 
@@ -44,32 +48,32 @@ void setup() {
 #endif
 #ifdef TACTJAM_TEST_OLED
   Serial.println("\tOLED display");
-  if (!tactjam::display::SetupOLED()) {
+  if (!oled_display.Initialize()) {
     Serial.println("\tERROR: display setup");
   }
-  tactjam::display::TestStaticScreen();
-  delay(5000);
-  tactjam::display::TestDrawLine();
+  oled_display.TestStaticScreen();
+  delay(3000);
+  oled_display.TestDrawLines();
 #endif
 #ifdef TACTJAM_TEST_BUZZER
   Serial.println("\tbuzzer");
-  tactjam::buzzer::TestMelody();
+  buzzer.TestMelody();
 #endif
 #ifdef TACTJAM_TEST_SIPO
   Serial.println("\tShift Registers (SIPO)");
-  tactjam::shiftregister::SetupSIPO();
-  tactjam::shiftregister::TestSIPO();
+  led_shiftregister.Initialize();
+  led_shiftregister.Test();
 #endif
 #ifdef TACTJAM_TEST_PISO
   Serial.println("\tShift Registers (PISO)");
-  tactjam::shiftregister::SetupPISO();
+  buttons_shiftregister.Initialize();
 #endif
 }
 
 
 void loop() {
 #ifdef TACTJAM_TEST_PISO
-  uint8_t activeButtons = tactjam::shiftregister::ReadFromPISO();
+  uint8_t activeButtons = buttons_shiftregister.Read();
   if (activeButtons != 0) {
     Serial.print("activeButtons DEC: ");
     Serial.println(activeButtons, DEC);
@@ -77,7 +81,7 @@ void loop() {
     Serial.println(activeButtons, BIN);
   }
 #ifdef TACTJAM_TEST_SIPO
-  tactjam::shiftregister::UpdateSIPO(activeButtons);
+  led_shiftregister.Update(activeButtons);
 #endif
 #endif
 }

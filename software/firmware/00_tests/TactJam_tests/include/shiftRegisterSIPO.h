@@ -14,40 +14,79 @@
 
 namespace tactjam {
 namespace shiftregister {
-  const uint8_t latchPinSIPO = 18;
-  const uint8_t clockPinSiPO = 19;
-  const uint8_t dataPinSIPO = 5;
-  const uint8_t bitOrderSIPO = LSBFIRST;
-  const uint32_t delayMillis = 50;
+namespace sipo {
+  
+class SN74HC595 {
+  private:
+    uint8_t latch_pin_;
+    uint8_t clock_pin_;
+    uint8_t data_pin_;
+    uint8_t bit_order_;
+    uint32_t delay_millis_;
+    bool initialized_;
 
-  bool initializedSIPO = false;
-
-  void SetupSIPO() {
-    pinMode(latchPinSIPO, OUTPUT);
-    pinMode(clockPinSiPO, OUTPUT);
-    pinMode(dataPinSIPO, OUTPUT);
-    initializedSIPO = true;
-  }
-
-  void UpdateSIPO(uint8_t value) {
-    if (!initializedSIPO) {
-      return;
+  public:
+    SN74HC595() {
+      // default configuration
+      SN74HC595(18, 19, 5);
     }
-    digitalWrite(latchPinSIPO, LOW);
-    shiftOut(dataPinSIPO, clockPinSiPO, bitOrderSIPO, value);
-    digitalWrite(latchPinSIPO, HIGH);
-  }
 
-  void TestSIPO() {
-    if (!initializedSIPO) {
-      return;
+    SN74HC595(uint8_t latch_pin, uint8_t clock_pin, uint8_t data_pin, uint32_t delay_millis = 50, uint8_t bit_order = LSBFIRST) {
+      latch_pin_ = latch_pin;
+      clock_pin_ = clock_pin;
+      data_pin_ = data_pin;
+      bit_order_ = bit_order;
+      delay_millis_ = delay_millis;
+      initialized_ = false;
     }
-    for (uint8_t i=0; i<255; i++) {
-      UpdateSIPO(i);
-      delay(delayMillis);
+
+    ~SN74HC595() = default;
+
+    void ChangeConfig(uint8_t latch_pin, uint8_t clock_pin, uint8_t data_pin, uint32_t delay_millis, uint8_t bit_order) {
+      latch_pin_ = latch_pin;
+      clock_pin_ = clock_pin;
+      data_pin_ = data_pin;
+      bit_order_ = bit_order;
+      delay_millis_ = delay_millis;
+      Initialize();
     }
-    UpdateSIPO(0);
-  }
+
+    void ChangePins(uint8_t latch_pin, uint8_t clock_pin, uint8_t data_pin) {
+      latch_pin_ = latch_pin;
+      clock_pin_ = clock_pin;
+      data_pin_ = data_pin;
+      Initialize();
+    }
+
+    void Initialize() {
+      pinMode(latch_pin_, OUTPUT);
+      pinMode(clock_pin_, OUTPUT);
+      pinMode(data_pin_, OUTPUT);
+      initialized_ = true;
+    }
+
+    void Update(uint8_t value) {
+      if (!initialized_) {
+        Initialize();
+      }
+      digitalWrite(latch_pin_, LOW);
+      shiftOut(data_pin_, clock_pin_, bit_order_, value);
+      digitalWrite(latch_pin_, HIGH);
+    }
+
+    void Test() {
+      if (!initialized_) {
+        Initialize();
+      }
+      for (uint8_t i=0; i<255; i++) {
+        Update(i);
+        delay(delay_millis_);
+      }
+      Update(0);
+    }
+};
+
+}
 }
 }
 

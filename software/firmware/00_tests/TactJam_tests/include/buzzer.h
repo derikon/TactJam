@@ -4,43 +4,63 @@
 #include <Arduino.h>
 
 namespace tactjam {
-namespace buzzer {
-  const uint8_t pin = 23;
-  const uint8_t pwmChannel = 0;
-  const uint32_t duration = 300;
 
+class Buzzer {
+  private:
+    uint8_t pin_;
+    uint8_t pwm_channel_;
 
-  void NoTone(uint32_t duration = duration) {
-      ledcDetachPin(pin);
-      ledcWrite(pwmChannel, 0);
-      delay(duration);
-  }
+  public:
+    Buzzer() {
+      // default configuration
+      Buzzer(23, 0);
+    }
 
-  void Tone(double frequency, uint32_t duration = duration) {
-      if (ledcRead(pwmChannel)) {
-          return;
-      }
-      ledcAttachPin(pin, pwmChannel);
-      ledcWriteTone(pwmChannel, frequency);
-      if (duration>1) {
-          delay(duration);
-          NoTone(0);
-      }    
-  }
+    Buzzer(uint8_t pin, uint8_t pwm_channel) {
+      pin_ = pin;
+      pwm_channel_ = pwm_channel;
+    }
 
-  void TestMelody() {
-    Tone(600);
-    NoTone();
-    Tone(300);
-    NoTone();
-    Tone(600);
-    NoTone();
-    Tone(600);
-    NoTone(100);
-    Tone(600);
-    NoTone(100);
-  }
-}
+    ~Buzzer() = default;
+
+    void NoTone(uint32_t length) {
+        ledcDetachPin(pin_);
+        ledcWrite(pwm_channel_, 0);
+        delay(length);
+    }
+
+    void Tone(double frequency, uint32_t length) {
+        if (ledcRead(pwm_channel_)) {
+            return;
+        }
+        ledcAttachPin(pin_, pwm_channel_);
+        ledcWriteTone(pwm_channel_, frequency);
+        if (length>1) {
+            delay(length);
+            NoTone(0);
+        }    
+    }
+
+    void TestMelody() {
+      Tone(700, 100);
+      NoTone(50);
+      Tone(600, 100);
+      NoTone(50);
+      Tone(500, 100);
+      NoTone(50);
+      Tone(400, 100);
+      NoTone(50);
+      Tone(300, 100);
+      NoTone(50);
+      Tone(500, 300);
+      NoTone(100);
+      Tone(500, 300);
+      NoTone(100);
+      Tone(500, 300);
+      NoTone(100);
+    }
+};
+
 }
 
 #endif //_TACTJAM_BUZZER_
