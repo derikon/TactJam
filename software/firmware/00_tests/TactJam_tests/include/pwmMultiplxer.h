@@ -80,24 +80,68 @@ class PWMPCA9685 {
       if (!initialized_) {
         Initialize();
       }
-      // turn on
+      // blink
+      for (uint8_t i = 0; i < 4; i++) {
+        // turn on
+        for (uint8_t idx = 0; idx < 8; idx++) {
+          #ifdef _TACTJAM_PWMMULTIPLEXER_ADAFRUIT_
+          PCA9685_->setPWM(idx, 0, 4095);
+          #else
+          PCA9685_->getPin(idx).fullOnAndWrite();
+          #endif
+        }
+        delay(500);
+        // turn off
+        for (uint8_t idx = 0; idx < 8; idx++) {
+          #ifdef _TACTJAM_PWMMULTIPLEXER_ADAFRUIT_
+          PCA9685_->setPWM(idx, 4095, 0);
+          #else
+          PCA9685_->getPin(idx).fullOffAndWrite();
+          #endif
+        }
+        delay(500);
+      }
+
+      // wave
+      for (uint16_t i=0; i<4096; i += 8) {
+        for (uint8_t idx=0; idx < 8; idx++) {
+          #ifdef _TACTJAM_PWMMULTIPLEXER_ADAFRUIT_
+          PCA9685_->setPWM(idx, 0, (i + (4096/16)*idx) % 4096);
+          #else
+          PCA9685_->getPin(idx).setValueAndWrite((i + (4096/8)*idx) % 4096);
+          #endif
+        }
+      }
+
+      // turn off
       for (uint8_t idx = 0; idx < 8; idx++) {
         #ifdef _TACTJAM_PWMMULTIPLEXER_ADAFRUIT_
         PCA9685_->setPWM(idx, 4095, 0);
         #else
-        PCA9685_->getPin(idx).fullOnAndWrite();
-        #endif
-      }
-      delay(500);
-      // turn off
-      for (uint8_t idx = 0; idx < 8; idx++) {
-        #ifdef _TACTJAM_PWMMULTIPLEXER_ADAFRUIT_
-        PCA9685_->setPWM(idx, 0, 4095);
-        #else
         PCA9685_->getPin(idx).fullOffAndWrite();
         #endif
       }
-      delay(500);
+    }
+
+    void Update(uint8_t activations) {
+      if (!initialized_) {
+        Initialize();
+      }
+      for (uint8_t idx = 0; idx < 8; idx++) {
+        if (((activations >> idx)%2) == 0) {
+          #ifdef _TACTJAM_PWMMULTIPLEXER_ADAFRUIT_
+          PCA9685_->setPWM(7-idx, 4095, 0);
+          #else
+          PCA9685_->getPin(idx).fullOnAndWrite();
+          #endif
+        } else {
+          #ifdef _TACTJAM_PWMMULTIPLEXER_ADAFRUIT_
+          PCA9685_->setPWM(7-idx, 0, 4095);
+          #else
+          PCA9685_->getPin(idx).fullOffAndWrite();
+          #endif
+        }
+      }
     }
 };
 

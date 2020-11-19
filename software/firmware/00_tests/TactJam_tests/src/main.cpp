@@ -82,6 +82,7 @@ void setup() {
 #ifdef TACTJAM_TEXT_PWMMULTIPLEXER
   Serial.println("\tPWM Multiplexer");
   actuators.Initialize();
+  actuators.Test();
 #endif
 }
 
@@ -98,12 +99,12 @@ void loop() {
 #ifdef TACTJAM_TEST_SIPO
   led_shiftregister.Update(activeButtons);
 #endif
-#endif
+#ifdef TACTJAM_TEXT_PWMMULTIPLEXER
+  actuators.Update(activeButtons);
+#endif //TACTJAM_TEXT_PWMMULTIPLEXER
+#endif //TACTJAM_TEST_PISO
 #ifdef TACTJAM_TEST_I2CSCAN
   i2c_scanner.Scan();
   delay(3000);
-#endif
-#ifdef TACTJAM_TEXT_PWMMULTIPLEXER
-  actuators.Test();
 #endif
 }
