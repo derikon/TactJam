@@ -29,9 +29,9 @@ class PWMPCA9685 {
   public:
     PWMPCA9685() {
       #ifdef _TACTJAM_PWMMULTIPLEXER_ADAFRUIT_
-      PWMPCA9685(0x0, 800);
+      PWMPCA9685(0x40, 800);
       #else
-      PWMPCA9685(0x0, PCA9685_MODE_LED_DIRECT, 800);
+      PWMPCA9685(0x40, PCA9685_MODE_LED_DIRECT, 800);
       #endif
     }
 
