@@ -6,7 +6,7 @@
 #define TACTJAM_TEST_ESPCONFIG
 #define TACTJAM_TEST_SIPO
 #define TACTJAM_TEST_PISO
-#define TACTJAM_TEST_I2CSCAN
+//#define TACTJAM_TEST_I2CSCAN
 #define TACTJAM_TEXT_PWMMULTIPLEXER
 
 
@@ -40,8 +40,6 @@ tactjam::pwm::PWMPCA9685 actuators;
 #endif
 
 
-
-
 const unsigned long baudRate = 115200;
 
 
@@ -66,7 +64,7 @@ void setup() {
   oled_display.TestDrawLines();
 #endif
 #ifdef TACTJAM_TEST_BUZZER
-  Serial.println("\tbuzzer");
+  Serial.println("\tBuzzer");
   buzzer.TestMelody();
 #endif
 #ifdef TACTJAM_TEST_SIPO
