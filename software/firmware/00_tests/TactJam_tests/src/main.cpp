@@ -8,6 +8,7 @@
 #define TACTJAM_TEST_PISO
 //#define TACTJAM_TEST_I2CSCAN
 #define TACTJAM_TEXT_PWMMULTIPLEXER
+#define TACTJAM_TEST_LIN_ENCODER_
 
 
 
@@ -37,6 +38,12 @@ tactjam::i2c::Scanner i2c_scanner;
 #ifdef TACTJAM_TEXT_PWMMULTIPLEXER
 #include "pwmMultiplxer.h"
 tactjam::pwm::PWMPCA9685 actuators;
+#endif
+#ifdef TACTJAM_TEST_LIN_ENCODER_
+#include "linEncoder.h"
+tactjam::encoder::LinEncoder intensity_encoder(12, 30);
+tactjam::encoder::LinEncoderSwitch mode_encoder(14, 4);
+tactjam::encoder::LinEncoderSwitch slot_encoder(27, 3);
 #endif
 
 
@@ -84,6 +91,12 @@ void setup() {
   actuators.Initialize();
   actuators.Test();
 #endif
+#ifdef TACTJAM_TEST_LIN_ENCODER_
+  Serial.println("\tLinear Encoder");
+  intensity_encoder.Initialize();
+  mode_encoder.Initialize();
+  slot_encoder.Initialize();
+#endif
 }
 
 
@@ -106,5 +119,19 @@ void loop() {
 #ifdef TACTJAM_TEST_I2CSCAN
   i2c_scanner.Scan();
   delay(3000);
+#endif
+#ifdef TACTJAM_TEST_LIN_ENCODER_
+  if (intensity_encoder.UpdateAvailable()) {
+    delay(5);
+    Serial.printf("global intensity: %d (12bit), %d (8bit), %d (percent)\n", intensity_encoder.Get12bit(), intensity_encoder.Get8bit(), intensity_encoder.GetPercent());
+  }
+  if (mode_encoder.UpdateAvailable()) {
+    delay(20);
+    Serial.printf("mode: %d\n", mode_encoder.GetState());
+  }
+  if (slot_encoder.UpdateAvailable()) {
+    delay(20);
+    Serial.printf("slot: %d\n", slot_encoder.GetState());
+  }
 #endif
 }
