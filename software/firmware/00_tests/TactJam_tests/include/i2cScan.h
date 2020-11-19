@@ -28,6 +28,7 @@ class Scanner {
     }
 
     void Scan(bool print = true) {
+      devices_.clear();
       for (uint8_t address = 1; address < 127; address++) {
         Wire.beginTransmission(address);
         if (Wire.endTransmission() == 0) {
