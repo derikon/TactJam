@@ -2,10 +2,10 @@
 #define _TACTJAM_PWMMULTIPLEXER_
 
 // un-/comment to switch driver library
-//#define _TACTJAM_PWMMULTIPLEXER_ADAFRUIT_
+#define _TACTJAM_PWMMULTIPLEXER_ADAFRUIT_
 
+#include <Wire.h>
 #ifdef _TACTJAM_PWMMULTIPLEXER_ADAFRUIT_
-//#include <Arduino.h>
 #include <Adafruit_PWMServoDriver.h>
 #else
 #include <PCA9685.h>
@@ -62,10 +62,14 @@ class PWMPCA9685 {
     }
 
     void Initialize() {
+      if (!Wire.busy()) {
+        Wire.begin();
+      }
       #ifdef _TACTJAM_PWMMULTIPLEXER_ADAFRUIT_
       PCA9685_->begin();
       PCA9685_->setOscillatorFrequency(27000000);
       PCA9685_->setPWMFreq(frequency_);
+      Wire.setClock(400000);
       #else
       PCA9685_->setup();
       #endif
