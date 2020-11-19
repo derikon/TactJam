@@ -47,7 +47,7 @@ class M74HC166 {
     void Initialize() {
       pinMode(latch_pin_, OUTPUT);
       pinMode(clock_pin_, OUTPUT);
-      pinMode(data_pin_, OUTPUT);
+      pinMode(data_pin_, INPUT);
       initialized_ = true;
     }
 
