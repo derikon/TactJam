@@ -27,7 +27,7 @@ class M74HC166 {
   public:
     M74HC166() {
       // default configuration
-      M74HC166(16, 17, 4);
+      *this = M74HC166(16, 17, 4);
     }
 
     M74HC166(uint8_t latch_pin, uint8_t clock_pin, uint8_t data_pin) {

@@ -28,7 +28,7 @@ class SN74HC595 {
   public:
     SN74HC595() {
       // default configuration
-      SN74HC595(18, 19, 5);
+      *this = SN74HC595(18, 19, 5);
     }
 
     SN74HC595(uint8_t latch_pin, uint8_t clock_pin, uint8_t data_pin, uint32_t delay_millis = 50, uint8_t bit_order = LSBFIRST) {
