@@ -69,6 +69,7 @@ void setup() {
   oled_display.TestStaticScreen();
   delay(3000);
   oled_display.TestDrawLines();
+  oled_display.TestMenuScreen();
 #endif
 #ifdef TACTJAM_TEST_BUZZER
   Serial.println("\tBuzzer");

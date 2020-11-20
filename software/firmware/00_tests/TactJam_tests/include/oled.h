@@ -77,6 +77,59 @@ class OLED_i2c {
       SSD1306_->clearDisplay();
       SSD1306_->display();
     }
+
+    void TestMenuScreen() {
+      // lazy evaltuation shoul prevent call to Initialize if already initialized
+      if (!initialized_ && !Initialize()) {
+        return;
+      }
+      SSD1306_->clearDisplay();
+      SSD1306_->invertDisplay(false);
+      DrawStatusBar();
+      SSD1306_->drawRect(0, 12, 128, 64-12, SSD1306_WHITE);
+      SSD1306_->setTextColor(SSD1306_WHITE);
+      SSD1306_->setTextSize(2);
+      SSD1306_->setCursor(20, 24);
+      SSD1306_->println("TactJam");
+      SSD1306_->setTextSize(1);
+      SSD1306_->setCursor(16, 42);
+      SSD1306_->println(" v0.1");
+      SSD1306_->display();
+    }
+
+  private:
+    const int16_t kCharWidth = 6;
+    const int16_t kCharHeight = 8;
+    const int16_t kTextOffsetLeft = 2;
+    const int16_t kTextOffsetTop = 2;
+    const int16_t kTextOffsetRight = 1;
+    const int16_t kTextOffsetBottom = 1;
+    const int16_t kSpacing = 1;
+    const int16_t kLineHeight = kCharHeight + kTextOffsetTop + kTextOffsetBottom;
+
+    void DrawStatusBar() {
+      DrawMenuPair("mode", "jam", 0, 0);
+      DrawMenuPair("slot", "1", 52, 0);
+      DrawMenuPair("L", "100%", 92, 0);
+    }
+
+    void DrawMenuPair(const String& title, const String& value, int16_t x, int16_t y) {
+      SSD1306_->setTextSize(1);
+      // title column
+      auto title_width = title.length() * kCharWidth;
+      auto title_line_width = title_width + kTextOffsetLeft + kTextOffsetRight;
+      SSD1306_->drawRect(x, y, title_line_width, kLineHeight, SSD1306_WHITE);
+      SSD1306_->setTextColor(SSD1306_WHITE);
+      SSD1306_->setCursor(x + kTextOffsetLeft, y + kTextOffsetTop);
+      SSD1306_->println(title);
+      // value column
+      auto value_width = value.length() * kCharWidth;
+      auto value_line_width = value_width + kTextOffsetLeft + kTextOffsetRight;
+      SSD1306_->fillRect(x + title_line_width, y, value_line_width, kLineHeight, SSD1306_WHITE);
+      SSD1306_->setTextColor(SSD1306_BLACK);
+      SSD1306_->setCursor(x + title_line_width + kSpacing, y + kTextOffsetTop);
+      SSD1306_->println(value);
+    }
 };
 
 }
