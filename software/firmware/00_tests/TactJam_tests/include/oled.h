@@ -40,7 +40,7 @@ class OLED_i2c {
     }
 
     void TestStaticScreen() {
-      // lazy evaltuation shoul prevent call to Initialize if already initialized
+      // lazy evaltuation should prevent call to Initialize if already initialized
       if (!initialized_ && !Initialize()) {
         return;
       }
@@ -56,7 +56,7 @@ class OLED_i2c {
     }
 
     void TestDrawLines() {
-      // lazy evaltuation shoul prevent call to Initialize if already initialized
+      // lazy evaltuation should prevent call to Initialize if already initialized
       if (!initialized_ && !Initialize()) {
         return;
       }
@@ -79,7 +79,7 @@ class OLED_i2c {
     }
 
     void TestMenuScreen() {
-      // lazy evaltuation shoul prevent call to Initialize if already initialized
+      // lazy evaltuation should prevent call to Initialize if already initialized
       if (!initialized_ && !Initialize()) {
         return;
       }
