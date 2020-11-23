@@ -10,5 +10,5 @@ A collaborative playground for composing spatial tactons.
 ### [Wiki (Tutorials)](https://github.com/derikon/TactJam/wiki)
 ## TEI-Studio 2021
 ### [Description]()
-### [Schedule](schedule.html)
+### [Schedule](schedule)
 ## Links
