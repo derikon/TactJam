@@ -21,7 +21,8 @@ class M74HC166 {
     uint8_t latch_pin_;
     uint8_t clock_pin_;
     uint8_t data_pin_;
-    uint8_t data_;
+    uint8_t data_8_;
+    uint16_t data_16_;
     bool initialized_;
 
   public:
@@ -51,7 +52,7 @@ class M74HC166 {
       initialized_ = true;
     }
 
-    uint8_t Read() {
+    uint8_t Read8() {
       if (!initialized_) {
         Initialize();
       }
@@ -59,15 +60,34 @@ class M74HC166 {
       digitalWrite(clock_pin_, LOW);
       digitalWrite(clock_pin_, HIGH);
       digitalWrite(latch_pin_, HIGH);
-      data_ = 0;
+      data_8_ = 0;
       for(uint8_t j = 0; j < 8; j++) {
         if (!digitalRead(data_pin_)) {
-          data_ = data_ | (uint8_t)((uint8_t)1 << j);
+          data_8_ = data_8_ | (uint8_t)((uint8_t)1 << j);
         }
         digitalWrite(clock_pin_, LOW);
         digitalWrite(clock_pin_, HIGH);
       }
-      return data_;
+      return data_8_;
+    }
+
+    uint16_t Read16() {
+      if (!initialized_) {
+        Initialize();
+      }
+      digitalWrite(latch_pin_, LOW);
+      digitalWrite(clock_pin_, LOW);
+      digitalWrite(clock_pin_, HIGH);
+      digitalWrite(latch_pin_, HIGH);
+      data_16_ = 0;
+      for(uint8_t j = 0; j < 16; j++) {
+        if (!digitalRead(data_pin_)) {
+          data_16_ = data_16_ | (uint16_t)((uint16_t)1 << j);
+        }
+        digitalWrite(clock_pin_, LOW);
+        digitalWrite(clock_pin_, HIGH);
+      }
+      return data_16_;
     }
 };
 

@@ -1,14 +1,15 @@
 #include <Arduino.h>
 
 // uncomment the parts you want to include
-#define TACTJAM_TEST_OLED
-#define TACTJAM_TEST_BUZZER
-#define TACTJAM_TEST_ESPCONFIG
-#define TACTJAM_TEST_SIPO
+//#define TACTJAM_TEST_OLED
+//#define TACTJAM_TEST_BUZZER
+//#define TACTJAM_TEST_ESPCONFIG
+//#define TACTJAM_TEST_SIPO
 #define TACTJAM_TEST_PISO
 //#define TACTJAM_TEST_I2CSCAN
-#define TACTJAM_TEXT_PWMMULTIPLEXER
-#define TACTJAM_TEST_LIN_ENCODER_
+//#define TACTJAM_TEXT_PWMMULTIPLEXER
+//#define TACTJAM_TEST_LIN_ENCODER_
+
 
 
 
@@ -45,6 +46,7 @@ tactjam::encoder::LinEncoder intensity_encoder(12, 30);
 tactjam::encoder::LinEncoderSwitch mode_encoder(14, 4);
 tactjam::encoder::LinEncoderSwitch slot_encoder(27, 3);
 #endif
+
 
 
 const unsigned long baudRate = 115200;
@@ -103,12 +105,21 @@ void setup() {
 
 void loop() {
 #ifdef TACTJAM_TEST_PISO
-  uint8_t activeButtons = buttons_shiftregister.Read();
-  if (activeButtons != 0) {
-    Serial.print("activeButtons DEC: ");
-    Serial.println(activeButtons, DEC);
-    Serial.print("activeButtons BIN: ");
-    Serial.println(activeButtons, BIN);
+  //auto activeButtons = buttons_shiftregister.Read8();
+  auto activeButtons = buttons_shiftregister.Read16();
+  auto activeActuatorButtons = activeButtons >> 8;
+  if (activeActuatorButtons != 0) {
+    Serial.print("activeActuatorButtons DEC: ");
+    Serial.println(activeActuatorButtons, DEC);
+    Serial.print("activeActuatorButtons BIN: ");
+    Serial.println(activeActuatorButtons, BIN);
+  }
+  uint8_t activeMenuButtons = (activeButtons >> 4) & 0xFF;
+  if (activeMenuButtons != 0) {
+    Serial.print("activeMenuButtons DEC: ");
+    Serial.println(activeMenuButtons, DEC);
+    Serial.print("activeMenuButtons BIN: ");
+    Serial.println(activeMenuButtons, BIN);
   }
 #ifdef TACTJAM_TEST_SIPO
   led_shiftregister.Update(activeButtons);
