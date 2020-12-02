@@ -114,7 +114,7 @@ void loop() {
     Serial.print("activeActuatorButtons BIN: ");
     Serial.println(activeActuatorButtons, BIN);
   }
-  uint8_t activeMenuButtons = (activeButtons >> 4) & 0xFF;
+  uint8_t activeMenuButtons = (activeButtons >> 4) & 0xF;
   if (activeMenuButtons != 0) {
     Serial.print("activeMenuButtons DEC: ");
     Serial.println(activeMenuButtons, DEC);
