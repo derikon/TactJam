@@ -55,3 +55,16 @@ the files via Discord.
 
 ![Figure 3: TactJam](TODO_ADD_PICTURE)
 
+The device provides eight vibrotactile actuators (see Figure 3, left, top
+row), each coupled to one push button on the device’s left or right
+side. Pushing the button triggers the actuator, and the actuator
+keeps vibrating as long as the button is pressed. Potentiometers
+(nobbs in the center) control the intensity of the actuators or the
+speed of recording and playback (like a digital metronome). The
+freely mountable actuators can be combined in several ways to
+either form a single shape, smaller groups, or distributed anywhere
+on the body and acting individually (see Figure 3, center). The actua-
+tors’ wires are about 1.5m long to enable whole body placement
+(see Figure 3, right).
+
+
