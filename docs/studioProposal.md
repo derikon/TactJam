@@ -43,3 +43,15 @@ on type of source).
 
 ![Figure 2: Studio Schedule](img/studioSchedule.png)
 
+## Hands-on design of tactons with TactJam
+
+TactJam (see Figure 3, left) is an instrument-like device which enables users
+to quickly explore tactons and freely create new ones by playing
+them live or even record tactons and play them back later. Recording
+tactons enables participants to share their tactons with others. To do
+so they need to transfer the desired tactons via a dedicated software
+(also provided by the organizers) to their computer and then send
+the files via Discord.
+
+![Figure 3: TactJam](TODO_ADD_PICTURE)
+
