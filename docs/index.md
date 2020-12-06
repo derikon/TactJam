@@ -9,6 +9,7 @@ A collaborative playground for composing spatial tactons.
 ### [Project details]()
 ### [Wiki (Tutorials)](https://github.com/derikon/TactJam/wiki)
 ## TEI-Studio 2021
+### [Call for Participation](callForParticipation)
 ### [Description]()
 ### [Schedule](schedule)
 ## Links
