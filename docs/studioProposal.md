@@ -41,5 +41,5 @@ The results remain accessible after the studio and all sources will
 be licensed under Open Source or Creative Commons (depending
 on type of source).
 
-![Studio Schedule](docs/img/studioSchedule.png)
+![Figure 2: Studio Schedule](img/studioSchedule.png)
 
