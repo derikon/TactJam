@@ -53,7 +53,7 @@ so they need to transfer the desired tactons via a dedicated software
 (also provided by the organizers) to their computer and then send
 the files via Discord.
 
-![Figure 3: TactJam](TODO_ADD_PICTURE)
+![Figure 3: TactJam](img/figure3TactJam.png)
 
 The device provides eight vibrotactile actuators (see Figure 3, left, top
 row), each coupled to one push button on the device’s left or right
