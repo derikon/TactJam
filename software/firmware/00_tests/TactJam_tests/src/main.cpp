@@ -1,16 +1,17 @@
 #include <Arduino.h>
+#include <vector>
 
 // uncomment the parts you want to include
 //#define TACTJAM_TEST_OLED
 //#define TACTJAM_TEST_BUZZER
-//#define TACTJAM_TEST_ESPCONFIG
+#define TACTJAM_TEST_ESPCONFIG
 //#define TACTJAM_TEST_SIPO
 //#define TACTJAM_TEST_PISO
 //#define TACTJAM_TEST_I2CSCAN
 //#define TACTJAM_TEXT_PWMMULTIPLEXER
 //#define TACTJAM_TEST_LIN_ENCODER
-#define TACTJAM_TEST_DECODE_VTP
-#define TACTJAM_TEST_VTP_PLAYER
+//#define TACTJAM_TEST_DECODE_VTP
+//#define TACTJAM_TEST_VTP_PLAYER
 
 
 
@@ -169,5 +170,22 @@ void loop() {
   vtp_player.GetNextSample();
   vtp_player.PrintSample();
   vtp_player.WaitUntilNextTick();
+#endif
+#ifdef TACTJAM_TEST_ESPCONFIG
+  tactjam::config::MonitorHeapSize();
+  static std::vector<byte*> memory_grave;
+  static int heap_iterations = 0;
+  heap_iterations++;
+  auto evil_mem = new byte[666];
+  memory_grave.push_back(evil_mem);
+  if (heap_iterations == 100) {
+    Serial.println("free wasted heap");
+    for (auto item : memory_grave) {
+      delete(item);
+    }
+    memory_grave.clear();
+    heap_iterations = 0;
+  }
+  delay(200);
 #endif
 }
