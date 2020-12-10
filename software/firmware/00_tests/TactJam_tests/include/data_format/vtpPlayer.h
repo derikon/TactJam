@@ -27,11 +27,6 @@ private:
   uint16_t tick_millis_;
   bool initialized_;
 
-  void PrintAccumulatorArray(unsigned int* array) {
-    for (int i=0; i < accumulator_.n_channels; i++) {
-      Serial.print(array[i]);
-    }
-  }
 
 public:
   VTPPlayer() = delete;
