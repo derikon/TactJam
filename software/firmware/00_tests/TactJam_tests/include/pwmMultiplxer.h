@@ -123,7 +123,7 @@ class PWMPCA9685 {
       }
     }
 
-    void Update(uint8_t activations) {
+    void Update(uint8_t activations, uint16_t amplitude = 4095) {
       if (!initialized_) {
         Initialize();
       }
@@ -136,7 +136,7 @@ class PWMPCA9685 {
           #endif
         } else {
           #ifdef _TACTJAM_PWMMULTIPLEXER_ADAFRUIT_
-          PCA9685_->setPWM(7-idx, 0, 4095);
+          PCA9685_->setPWM(7-idx, 0, amplitude);
           #else
           PCA9685_->getPin(idx).fullOffAndWrite();
           #endif

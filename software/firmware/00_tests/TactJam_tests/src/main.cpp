@@ -4,7 +4,7 @@
 // uncomment the parts you want to include
 //#define TACTJAM_TEST_OLED
 //#define TACTJAM_TEST_BUZZER
-#define TACTJAM_TEST_ESPCONFIG
+//#define TACTJAM_TEST_ESPCONFIG
 //#define TACTJAM_TEST_SIPO
 //#define TACTJAM_TEST_PISO
 //#define TACTJAM_TEST_I2CSCAN
@@ -12,6 +12,7 @@
 //#define TACTJAM_TEST_LIN_ENCODER
 //#define TACTJAM_TEST_DECODE_VTP
 //#define TACTJAM_TEST_VTP_PLAYER
+#define TACTJAM_TEST_VTP_SAMPLER
 
 
 
@@ -56,6 +57,18 @@ tactjam::data_format::VTPDecoder vtp_decoder;
 #ifdef TACTJAM_TEST_VTP_PLAYER
 #include "data_format/vtpPlayer.h"
 tactjam::data_format::VTPPlayer vtp_player(20);
+#endif
+#ifdef TACTJAM_TEST_VTP_SAMPLER
+#include "data_format/vtpSampler.h"
+tactjam::data_format::VTPSampler vtp_sampler(20);
+#include "linEncoder.h"
+tactjam::encoder::LinEncoder sampler_poti(12, 30);
+#include "shiftregisterPISO.h"
+tactjam::shiftregister::piso::M74HC166 sampler_buttons;
+#include "shiftRegisterSIPO.h"
+tactjam::shiftregister::sipo::SN74HC595 sampler_leds;
+#include "pwmMultiplxer.h"
+tactjam::pwm::PWMPCA9685 sampler_actuators;
 #endif
 
 
@@ -120,10 +133,43 @@ void setup() {
   Serial.println("\tVTP Player");
   vtp_player.Initialize();
 #endif
+#ifdef TACTJAM_TEST_VTP_SAMPLER
+  Serial.println("\tVTP Sampler");
+  vtp_sampler.Initialize();
+  sampler_poti.Initialize();
+  sampler_buttons.Initialize();
+  sampler_leds.Initialize();
+  sampler_actuators.Initialize();
+  vtp_sampler.SetAmplitude(sampler_poti.Get12bit());
+  vtp_sampler.SetActiveButtons(uint8_t(sampler_buttons.Read16() >> 8));
+#endif
 }
 
 
 void loop() {
+#ifdef TACTJAM_TEST_ESPCONFIG
+  tactjam::config::MonitorHeapSize();
+  static std::vector<byte*> memory_grave;
+  static int heap_iterations = 0;
+  heap_iterations++;
+  auto evil_mem = new byte[666];
+  memory_grave.push_back(evil_mem);
+  if (heap_iterations == 100) {
+    Serial.println("free wasted heap");
+    for (auto item : memory_grave) {
+      delete(item);
+    }
+    memory_grave.clear();
+    heap_iterations = 0;
+  }
+  delay(200);
+#endif
+
+#ifdef TACTJAM_TEST_I2CSCAN
+  i2c_scanner.Scan();
+  delay(3000);
+#endif
+
 #ifdef TACTJAM_TEST_PISO
   //auto activeButtons = buttons_shiftregister.Read8();
   auto activeButtons = buttons_shiftregister.Read16();
@@ -141,17 +187,17 @@ void loop() {
     Serial.print("activeMenuButtons BIN: ");
     Serial.println(activeMenuButtons, BIN);
   }
+
 #ifdef TACTJAM_TEST_SIPO
   led_shiftregister.Update(activeButtons);
 #endif
+
 #ifdef TACTJAM_TEXT_PWMMULTIPLEXER
   actuators.Update(activeButtons);
 #endif //TACTJAM_TEXT_PWMMULTIPLEXER
+
 #endif //TACTJAM_TEST_PISO
-#ifdef TACTJAM_TEST_I2CSCAN
-  i2c_scanner.Scan();
-  delay(3000);
-#endif
+
 #ifdef TACTJAM_TEST_LIN_ENCODER
   if (intensity_encoder.UpdateAvailable()) {
     delay(5);
@@ -166,26 +212,25 @@ void loop() {
     Serial.printf("slot: %d\n", slot_encoder.GetState());
   }
 #endif
+
 #ifdef TACTJAM_TEST_VTP_PLAYER
   vtp_player.GetNextSample();
   vtp_player.PrintSample();
   vtp_player.WaitUntilNextTick();
 #endif
-#ifdef TACTJAM_TEST_ESPCONFIG
-  tactjam::config::MonitorHeapSize();
-  static std::vector<byte*> memory_grave;
-  static int heap_iterations = 0;
-  heap_iterations++;
-  auto evil_mem = new byte[666];
-  memory_grave.push_back(evil_mem);
-  if (heap_iterations == 100) {
-    Serial.println("free wasted heap");
-    for (auto item : memory_grave) {
-      delete(item);
-    }
-    memory_grave.clear();
-    heap_iterations = 0;
+
+#ifdef TACTJAM_TEST_VTP_SAMPLER
+  if (sampler_poti.UpdateAvailable()) {
+    vtp_sampler.SetAmplitude(sampler_poti.Get12bit());
   }
-  delay(200);
+  auto active_buttons = uint8_t(sampler_buttons.Read16() >> 8);
+  if (vtp_sampler.UpdateAvailable(active_buttons)) {
+    sampler_actuators.Update(active_buttons, sampler_poti.Get12bit());
+    sampler_leds.Update(active_buttons);
+    vtp_sampler.WriteSample(active_buttons);
+    vtp_sampler.SetActiveButtons(active_buttons);
+    Serial.printf("samples: %u\n", vtp_sampler.GetTactonSampleLength());
+  }
+  vtp_sampler.WaitUntilNextTick();
 #endif
 }

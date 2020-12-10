@@ -63,7 +63,8 @@ class M74HC166 {
       data_8_ = 0;
       for(uint8_t j = 0; j < 8; j++) {
         if (!digitalRead(data_pin_)) {
-          data_8_ = data_8_ | (uint8_t)((uint8_t)1 << j);
+          bitSet(data_8_, j);
+          //data_8_ = data_8_ | (uint8_t)((uint8_t)1 << j);
         }
         digitalWrite(clock_pin_, LOW);
         digitalWrite(clock_pin_, HIGH);
@@ -82,7 +83,8 @@ class M74HC166 {
       data_16_ = 0;
       for(uint8_t j = 0; j < 16; j++) {
         if (!digitalRead(data_pin_)) {
-          data_16_ = data_16_ | (uint16_t)((uint16_t)1 << j);
+          bitSet(data_16_, j);
+          //data_16_ = data_16_ | (uint16_t)((uint16_t)1 << j);
         }
         digitalWrite(clock_pin_, LOW);
         digitalWrite(clock_pin_, HIGH);

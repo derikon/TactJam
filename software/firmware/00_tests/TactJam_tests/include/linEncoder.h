@@ -26,6 +26,7 @@ class LinEncoder {
       pinMode(pin_, INPUT);
       value_ = 0;
       initialized_ = true;
+      Read();
     }
 
     bool UpdateAvailable() {
@@ -86,6 +87,7 @@ class LinEncoderSwitch {
       pinMode(pin_, INPUT);
       state_ = 0;
       initialized_ = true;
+      GetState();
     }
 
     uint8_t GetState() {
