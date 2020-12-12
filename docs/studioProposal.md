@@ -41,7 +41,8 @@ The results remain accessible after the studio and all sources will
 be licensed under Open Source or Creative Commons (depending
 on type of source).
 
-![Figure 2: Studio Schedule](img/studioSchedule.png)
+![Figure 1](img/schedule_hor.jpg)
+**Figure 1: Studio Schedule**
 
 ## Hands-on design of tactons with TactJam
 
@@ -53,7 +54,8 @@ so they need to transfer the desired tactons via a dedicated software
 (also provided by the organizers) to their computer and then send
 the files via Discord.
 
-![Figure 3: TactJam](img/figure3TactJam.png)
+![Figure 2](img/TactJam_config_hor.jpg)
+**Figure 2: TactJam is an instrument-like device (left) for exploring spatial tactons. The connected actuators can form ashape, groups, or act individually (center) and can be placed anywhere on the body, e.g. grouped (right).**
 
 The device provides eight vibrotactile actuators (see Figure 3, left, top
 row), each coupled to one push button on the device’s left or right
