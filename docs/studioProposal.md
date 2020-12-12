@@ -8,7 +8,7 @@ proposed learning objectives.
 
 After a general introduction to the studio’s topic and some
 grounding in theory, we plan to structure the studio into three
-major consecutive sessions: (1) think, (2) pair, (3) share (see Fig. 2).
+major consecutive sessions: (1) think, (2) pair, (3) share (see Figure 1).
 During the *think-session* participants will get familiar with TactJam
 and freely experiment with it. They will compose and experience
 spatial vibrotactile patterns produced in real-time. The goal for this
@@ -27,8 +27,8 @@ organizers to document the progress during the studio afterwards.
 During the *share-session*, participants will present their strategies
 and share their tactons with all other groups. They will have the
 time to share their personal bodily experiences with TactJam and
-reflect on the creation process to compose tactons. Ideally, all par-
-ticipants will end this session with a list of dos and don’ts in mind
+reflect on the creation process to compose tactons. Ideally, all participants
+will end this session with a list of dos and don’ts in mind
 when composing tactons. These are also documented in the wiki
 by the organizers. We would also like to encourage the participants
 to summarize their impressions and findings in a short paragraph,
@@ -46,7 +46,7 @@ on type of source).
 
 ## Hands-on design of tactons with TactJam
 
-TactJam (see Figure 3, left) is an instrument-like device which enables users
+TactJam (see Figure 2, left) is an instrument-like device which enables users
 to quickly explore tactons and freely create new ones by playing
 them live or even record tactons and play them back later. Recording
 tactons enables participants to share their tactons with others. To do
@@ -57,7 +57,7 @@ the files via Discord.
 ![Figure 2](img/TactJam_config_hor.jpg)
 **Figure 2: TactJam is an instrument-like device (left) for exploring spatial tactons. The connected actuators can form ashape, groups, or act individually (center) and can be placed anywhere on the body, e.g. grouped (right).**
 
-The device provides eight vibrotactile actuators (see Figure 3, left, top
+The device provides eight vibrotactile actuators (see Figure 2, left, top
 row), each coupled to one push button on the device’s left or right
 side. Pushing the button triggers the actuator, and the actuator
 keeps vibrating as long as the button is pressed. Potentiometers
@@ -65,8 +65,8 @@ keeps vibrating as long as the button is pressed. Potentiometers
 speed of recording and playback (like a digital metronome). The
 freely mountable actuators can be combined in several ways to
 either form a single shape, smaller groups, or distributed anywhere
-on the body and acting individually (see Figure 3, center). The actua-
-tors’ wires are about 1.5m long to enable whole body placement
-(see Figure 3, right).
+on the body and acting individually (see Figure 2, center). The actuators’
+wires are about 1.5m long to enable whole body placement
+(see Figure 2, right).
 
 
