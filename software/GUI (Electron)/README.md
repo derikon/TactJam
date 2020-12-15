@@ -2,6 +2,7 @@
 # Graphical User Interface for TactJam
 
 This GUI uses the [Electron](https://www.electronjs.org/) framework. It includes a [Node](https://nodejs.org/en/) server and an HTML renderer all packed in one application.
+The server is handled in the [main.js](https://github.com/derikon/TactJam/blob/develop/software/GUI%20(Electron)/main.js) file.
 
 Currently, the application is not fully functional, only some major graphical features are implemented. For now, the application consists of:
 
