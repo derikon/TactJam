@@ -73,7 +73,7 @@ html {
     border: 1px solid change-color($black, $alpha: 0.3);
     vertical-align: top;
   }
-
+  
   input[type=submit], button {
     border-radius: 5px;
     padding: 10px 20px;
@@ -125,6 +125,7 @@ html {
 @import '_index';
 
 $connection-panel-height: 40px;
+$connection-panel-width: 300px;
 
 // connection panel always displayed
 #connection-panel {
@@ -142,14 +143,35 @@ $connection-panel-height: 40px;
 
   .connection-status {
     float: left;
-    margin-left: 15px;
+    margin-left: 10px;
     height: $connection-panel-height;
     line-height: $connection-panel-height;
 
     .fa-circle {
       font-size: 10px;
-      color: #E2654A;
       vertical-align: middle;
+
+      &.not-connected {
+        color: #E2654A;
+      }
+
+      &.connected {
+        color: #4a6be2;
+      }
+    }
+  }
+
+  #connection-description {
+    display: inline-block;
+    width: 0;
+    height: $connection-panel-height;
+    transition: width 0.2s;
+    font-size: 20px;
+    overflow: hidden;
+    vertical-align: middle;
+
+    &.visible {
+      width: $connection-panel-width - 50;
     }
   }
 
@@ -162,6 +184,6 @@ $connection-panel-height: 40px;
   }
 
   &.opened {
-    width: 250px;
+    width: $connection-panel-width;
   }
 }

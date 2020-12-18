@@ -6782,14 +6782,31 @@ input[type=text]:focus, input[type=password]:focus {
 }
 #connection-panel .connection-status {
   float: left;
-  margin-left: 15px;
+  margin-left: 10px;
   height: 40px;
   line-height: 40px;
 }
 #connection-panel .connection-status .fa-circle {
   font-size: 10px;
-  color: #E2654A;
   vertical-align: middle;
+}
+#connection-panel .connection-status .fa-circle.not-connected {
+  color: #E2654A;
+}
+#connection-panel .connection-status .fa-circle.connected {
+  color: #4a6be2;
+}
+#connection-panel #connection-description {
+  display: inline-block;
+  width: 0;
+  height: 40px;
+  transition: width 0.2s;
+  font-size: 20px;
+  overflow: hidden;
+  vertical-align: middle;
+}
+#connection-panel #connection-description.visible {
+  width: 250px;
 }
 #connection-panel .container-button {
   float: right;
@@ -6799,7 +6816,7 @@ input[type=text]:focus, input[type=password]:focus {
   cursor: pointer;
 }
 #connection-panel.opened {
-  width: 250px;
+  width: 300px;
 }
 
 /*# sourceMappingURL=style.css.map */

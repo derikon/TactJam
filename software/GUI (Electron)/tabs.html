@@ -17,7 +17,8 @@
 
     <div id="connection-panel">
         <div class="connection-status">
-            <span class="fas fa-circle"></span>
+            <span class="fas fa-circle not-connected"></span>
+            <span id="connection-description">No device connected</span>
         </div>
         <span class="container-button"><i id="button-fold" class="fas fa-chevron-right"></i></span>
     </div>
@@ -93,10 +94,12 @@
         if(cp.className.includes('opened')) {
             cp.className = cp.className.replace('opened', '');
             bf.className = 'fas fa-chevron-right';
+            document.getElementById('connection-description').className = '';
         }
         else {
             cp.className += 'opened';
             bf.className = 'fas fa-chevron-left';
+            document.getElementById('connection-description').className = 'visible';
         }
     }
 </script>

@@ -17,7 +17,7 @@ function createWindow () {
     // win.loadFile('tabs.html');
     // win.loadFile('index.html');
     // win.loadFile('save.html');
-    // win.webContents.openDevTools();
+    win.webContents.openDevTools();
 }
 
 // disable default menu
