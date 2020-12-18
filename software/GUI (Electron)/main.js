@@ -1,5 +1,6 @@
 const { app, BrowserWindow, ipcMain, Menu } = require('electron');
-
+// does not load like this
+// const VTP = import('vtp.js');
 
 function createWindow () {
     const win = new BrowserWindow({
@@ -13,8 +14,8 @@ function createWindow () {
         resizable: false
     });
 
-    win.loadFile('login.html');
-    // win.loadFile('tabs.html');
+    // win.loadFile('login.html');
+    win.loadFile('tabs.html');
     // win.loadFile('index.html');
     // win.loadFile('save.html');
     win.webContents.openDevTools();

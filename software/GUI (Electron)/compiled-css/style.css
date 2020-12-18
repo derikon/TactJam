@@ -6544,6 +6544,10 @@ html {
   line-height: 32px;
 }
 
+body {
+  overflow: hidden;
+}
+
 .form-centered {
   /* TODO: fix dimensions */
   min-width: 1200px;
@@ -6691,8 +6695,9 @@ input[type=text]:focus, input[type=password]:focus {
 }
 .etabs-tab .icons-buttons {
   display: none;
+  position: absolute;
+  right: 0;
   font-size: 24px;
-  float: right;
   margin-right: 15px;
   cursor: pointer;
   user-select: none;
