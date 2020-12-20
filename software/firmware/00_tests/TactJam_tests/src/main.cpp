@@ -46,9 +46,9 @@ tactjam::pwm::PWMPCA9685 actuators;
 #endif
 #ifdef TACTJAM_TEST_LIN_ENCODER
 #include "linEncoder.h"
-tactjam::encoder::LinEncoder intensity_encoder(12, 30);
-tactjam::encoder::LinEncoderSwitch mode_encoder(14, 4);
-tactjam::encoder::LinEncoderSwitch slot_encoder(27, 3);
+tactjam::encoder::LinEncoder intensity_encoder(15, 30);
+tactjam::encoder::LinEncoderSwitch mode_encoder(13, 3);
+tactjam::encoder::LinEncoderSwitch slot_encoder(12, 3);
 #endif
 #ifdef TACTJAM_TEST_DECODE_VTP
 #include "data_format/vtpDecoder.h"
