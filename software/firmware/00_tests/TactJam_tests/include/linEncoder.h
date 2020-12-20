@@ -94,7 +94,23 @@ class LinEncoderSwitch {
       if (!initialized_) {
         Initialize();
       }
-      state_ = map(analogRead(pin_), 0, 4095, 0, num_states_-1);
+      //state_ = map(analogRead(pin_), 0, 4095, 0, num_states_-1);
+      
+      int val = analogRead(pin_);
+
+      if(val >= 0 && val < 250)
+      {
+        state_ = 0;
+      }
+      else if(val >= 250 && val < 750)
+      {
+        state_ = 1;
+      }
+      else
+      {
+        state_ = 2;
+      }
+      
       return state_;
     }
 
@@ -102,7 +118,23 @@ class LinEncoderSwitch {
       if (!initialized_) {
         Initialize();
       }
-      auto state = map(analogRead(pin_), 0, 4095, 0, num_states_-1);
+      //auto state = map(analogRead(pin_), 0, 4095, 0, num_states_-1);
+      int val = analogRead(pin_);
+      int state = 0;
+
+      if(val >= 0 && val < 250)
+      {
+        state = 0;
+      }
+      else if(val >= 250 && val < 750)
+      {
+        state = 1;
+      }
+      else
+      {
+        state = 2;
+      }
+      
       return (state != state_);
     }
 };
