@@ -1,6 +1,6 @@
 # STUDIO SCHEDULE
 The studio is a one-day online event and will last about six hours
-divided into three sessions – *think, pair*, and *share* (see [STUDIO PROPOSAL](studioProposal)). To
+divided into three sessions – *think, pair*, and *share* (see [studio proposal](https://doi.org/10.1145/3430524.3442699)). To
 accommodate multiple time-zones we offer two exemplary schedules
  – one optimized for Europe and Asia (see first row in Table 1)
 and the other optimized for Europe and Americas (see second row
