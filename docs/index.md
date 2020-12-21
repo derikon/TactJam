@@ -8,14 +8,12 @@ Tactons are vibrotactile patterns used to convey information. Conventionally, a 
 # Important Dates
 
 - __Call out__: December 21st-22nd, 2020
-- __Registration deadline__: we require early registrations to ship the physical devices in time, these registrations are non-official (you will need to register to the studio officially at a later time)
+- __Registration deadline__: we require early registrations to ship the physical devices in time
   - _non-EU participants_ January 15th, 2021
   - _EU participants_, January 31st, 2021
 - __Workshop date__: February 19th, 2021
 
 You can find a detailed __schedule__ of the studio [here](studioSchedule).
-
-Please send an email to Dennis Wittchen [dennis.wittchen@htw-dresden.de](mailto:dennis.wittchen@htw-dresden.de) to __register__ early for the studio so we can __ship a device to you__.
 
 
 # Call for Participation
@@ -29,6 +27,20 @@ The aim of this studio is to organize collaborative ideation sessions focused on
 By the end of the studio, attendees will know about tactons and their uses in general. They will have experienced and designed novel vibrotactile patterns using a simple instrument-like device, and would have shared their creative process with others. The authors will keep the library of tactons created and report the results of the ideation sessions on the studio’s website.
 
 For any question regarding the workshop, please contact Dennis Wittchen at [dennis.wittchen@htw-dresden.de](mailto:dennis.wittchen@htw-dresden.de).
+
+
+# Registration
+
+Please send an email to Dennis Wittchen [dennis.wittchen@htw-dresden.de](mailto:dennis.wittchen@htw-dresden.de) to __register__ early for the studio so we can __ship a device to you__ (see email template below). __Note__, these registrations are non-official. You will need to register to the studio officially at a later time.
+
+```
+subject: TEI2021 TactJam
+
+Aloha Dennis,
+I would like to register for the TactJam studio at TEI 2021.
+Name: [full name]
+Address: [where should we send the device to]
+```
 
 # Organizers
 - __Dennis Wittchen__, University of Applied Sciences, Dresden, Germany - [dennis.wittchen@htw-dresden.de](mailto:dennis.wittchen@htw-dresden.de)
