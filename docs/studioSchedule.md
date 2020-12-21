@@ -17,12 +17,16 @@ the participants do not necessarily have to be online (e.g. while
 composing tactons). The organizers will however be available all
 the time for questions.
 
+
+**Table1: Studio schedule with two possible start and end times, each optimized for different time zones**
+
 | San Francisco<br/> PST (UTC-8) | New York<br/> EST (UTC-5)     | Berlin<br/> CET (UTC+1)        | Tokyo<br/> JST (UTC+9)         | Melbourne<br/> AEDT (UTC+11)   |
 |--------------------------------|-------------------------------|--------------------------------|--------------------------------|--------------------------------|
 | Thu, Feb 18<br/> 22:00 – 4:00  | Fri, Feb 19<br/> 1:00 – 7:00  | Fri, Feb 19<br/> 7:00 – 13:00  | Fri, Feb 19<br/> 15:00 – 21:00 | Fri, Feb 19<br/> 17:00 – 23:00 |
 | Fri, Feb 19<br/> 6:00 – 12:00  | Fri, Feb 19<br/> 9:00 – 15:00 | Fri, Feb 19<br/> 15:00 – 21:00 | Fri, Feb 19<br/> 23:00 – 5:00  | Sat, Feb 20<br/> 1:00 – 7:00   |
 
-**Table1: Studio schedule with two possible start and end times, each optimized for different time zones**
+
+**Table 2: Detailed studio schedule.**
 
 |                              | Duration                                                    | Description                                                                                                                                                                                                             |
 |------------------------------|-------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -35,7 +39,3 @@ the time for questions.
 | Share<br/> <br/> <br/>       | 80 minutes<br/> 50 minutes<br/> 30 minutes                  | abstracting a general set of rules<br/> group-wise presentation of the tactons<br/> discuss impressions, pros, and cons and derive dos and don’ts                                                                       |
 | Break                        | 10 minutes                                                  |                                                                                                                                                                                                                         |
 | Close<br/> <br/>             | 20 minutes<br/> 20 minutes                                  | concluding the session<br/> summary of the results and outlook for further cooperation                                                                                                                                  |
-
-**Table 2: Detailed studio schedule.**
-
-
