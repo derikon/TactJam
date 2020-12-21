@@ -8,12 +8,15 @@ TactJam prototype: using a tangible interface, users can quickly design tactons 
 # Important Dates
 
 - __Call out__: December 21st-22nd, 2020
-- __Registration deadline__: we require early registrations to ship the physical devices in time
+- __Registration deadline__: we require early registrations to ship the physical devices in time, these registrations are non-official (you will need to register to the studio officially at a later time)
   - _non-EU participants_ January 15th, 2021
-  - _EU participants_, January 31st, 2021 
+  - _EU participants_, January 31st, 2021
 - __Workshop date__: February 19th, 2021
 
 You can find a detailed __schedule__ of the studio [here](studioSchedule).
+
+Please send an email to Dennis Wittchen [dennis.wittchen@htw-dresden.de](mailto:dennis.wittchen@htw-dresden.de) to __register__ early for the studio so we can __ship a device to you__.
+
 
 # Call for Participation
 
