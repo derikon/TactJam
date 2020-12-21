@@ -18,7 +18,7 @@ composing tactons). The organizers will however be available all
 the time for questions.
 
 
-**Table1: Studio schedule with two possible start and end times, each optimized for different time zones**
+**Table1:** *Studio schedule with two possible start and end times, each optimized for different time zones*
 
 | San Francisco<br/> PST (UTC-8) | New York<br/> EST (UTC-5)     | Berlin<br/> CET (UTC+1)        | Tokyo<br/> JST (UTC+9)         | Melbourne<br/> AEDT (UTC+11)   |
 |--------------------------------|-------------------------------|--------------------------------|--------------------------------|--------------------------------|
@@ -26,7 +26,7 @@ the time for questions.
 | Fri, Feb 19<br/> 6:00 – 12:00  | Fri, Feb 19<br/> 9:00 – 15:00 | Fri, Feb 19<br/> 15:00 – 21:00 | Fri, Feb 19<br/> 23:00 – 5:00  | Sat, Feb 20<br/> 1:00 – 7:00   |
 
 
-**Table 2: Detailed studio schedule.**
+**Table 2:** *Detailed studio schedule.*
 
 |                              | Duration                                                    | Description                                                                                                                                                                                                             |
 |------------------------------|-------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
