@@ -3,7 +3,7 @@
 Tactons are vibrotactile patterns used to convey information. Conventionally, a small set of tactons is used on mobile phone or wearables to notify users of messages or emails received. However, tactons have multiple characteristics that one can vary to design a multitude of vibrotactile patterns. In addition, one can place vibrotactile actuators on different body areas to leverage the spatial dimension and the varying skin sensitivity across the body. Prior work proposed methods to design tactons based on musical or engineering knowledge, but hands-on methods remain scarce. For this studio, we adopt a hands-on approach for composing tactons. We leverage a simple instrument-like device that consists of vibrotactile actuators connected to dedicated buttons for designing tactons. While pressing a button, the corresponding actuator vibrates. Users can vary several characteristics of the tactons (e.g., duration and amplitude), and experience them in real time during the design process by placing the actuators on the body. These tactons can then be shared with other participants of the studio. Our goal with this studio is to observe users compose tactons collaboratively using a hands-on device, and better understand how they lay out the vibrotactile actuators on their body and what differences these layouts make in the tactile experience.
 
 ![TactJam prototype](img/teaser_2.jpg)
-**TactJam prototype:** *using a tangible interface, users can quickly design tactons while experiencing them on their body.*
+**TactJam prototype:** *using a tangible interface, users can quickly design tactons while experiencing them on their body. (This is an early prototype. The device that participants will receive is much more sophisticated :) )*
 
 # Important Dates
 
