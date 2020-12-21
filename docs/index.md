@@ -18,7 +18,7 @@ You can find a detailed __schedule__ of the studio [here](studioSchedule).
 
 # Call for Participation
 
-In this studio, we focus on designing vibrotactile patterns (tactons) for the whole body. These tactons enable conveying non-visual information to users that can be beneficial in many scenarios where overloading the user with visual information should be avoided (e.g., driving). While one can design tactons with various comprehensive tools, we adopt a more hands-on approach and propose to design them using an instrument-like device we call TactJam. Such a device is easy to master and does not require any knowledge in tactile feedback.
+In this studio, we focus on designing vibrotactile patterns (tactons) for the whole body. These tactons enable conveying non-visual information to users that can be beneficial in many scenarios where overloading the user with visual information should be avoided (e.g., driving). While one can design tactons with various comprehensive tools, we adopt a more hands-on approach and propose to design them using an instrument-like device we call TactJam. TactJam consists of vibro-tactile actuators one can fix on their body and actuate by pressing buttons on the interface. Using TactJam, one can record and play tactons previously designed by themselves or others. Such a device is easy to master and does not require any knowledge in tactile feedback.
 
 This studio is made for any person interested in designing tactons to be experienced on the whole body. We do not restrict applications from a certain population of the HCI community, but rather hope that many researchers or hobbyists from diverse backgrounds would attend.
 
