@@ -31,7 +31,7 @@ For any question regarding the workshop, please contact Dennis Wittchen at [denn
 
 # Registration
 
-Please send an email to Dennis Wittchen [dennis.wittchen@htw-dresden.de](mailto:dennis.wittchen@htw-dresden.de) to __register__ early for the studio so we can __ship a device to you__ (see email template below). __Note__, these registrations are non-official. You will need to register to the studio officially at a later time.
+Please send an email to Dennis Wittchen [dennis.wittchen@htw-dresden.de](mailto:dennis.wittchen@htw-dresden.de) to __register__ early for the studio so we can __ship a device to you__ (see email template below). __Note__, these registrations are non-official. You will need to register to the studio officially at a later time. The approximated cost of the studio is 105€.
 
 ```
 subject: TEI2021 TactJam
