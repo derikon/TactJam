@@ -13,7 +13,7 @@ TactJam prototype: using a tangible interface, users can quickly design tactons 
   - _EU participants_, January 31st, 2021 
 - __Workshop date__: February 19th, 2021
 
-You can find a detailed schedule of the studio [here](studioSchedule).
+You can find a detailed __schedule__ of the studio [here](studioSchedule).
 
 # Call for participation
 
