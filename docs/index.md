@@ -24,6 +24,7 @@ The aim of this studio is to organize collaborative ideation sessions focused on
 
 By the end of the studio, attendees will know about tactons and their uses in general. They will have experienced and designed novel vibrotactile patterns using a simple instrument-like device, and would have shared their creative process with others. The authors will keep the library of tactons created and report the results of the ideation sessions on the studio’s website.
 
+For any question regarding the workshop, please contact Dennis Wittchen at [dennis.wittchen@htw-dresden.de](mailto:dennis.wittchen@htw-dresden.de).
 
 # Schedule
 
